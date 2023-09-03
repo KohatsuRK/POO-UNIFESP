@@ -1,15 +1,23 @@
-//Renan Kohatsu 163980
-import { Bicicleta } from "./biciclea";
-import { Sistema } from "./sistema";
-import { Contrato } from "./contrato";
-import { Cliente } from "./cliente";
+import { App } from "./app";
+import { Bike } from "./bike";
+import { Rent } from "./rent";
+import { User } from "./user";
 
-const Jose = new Sistema(100,"José da silva")
-const Caloi = new Bicicleta("Caloi","1212",250)
-const Elias = new Cliente("Elias Santos","444999888-04")
-const contrato = new Contrato(Jose,25,Elias,Caloi,2)
-Jose.bikeAlugadas(1)
-contrato.preco(250,2,Caloi)
-console.log('Quantidade de Bicicletas alugadas: ', Jose.bikeAlugadas)
-console.log('Preço da bicilceta alugada por Elias: ', contrato.preco)
-console.log(contrato)
+const bike = new Bike('mountain bike', 'mountain', 
+    123, 500, 100.5, 'desc', 5, [])
+const user = new User('Maria', 'maria@mail.com', '1234')
+const today = new Date()
+const twoDaysFromToday = new Date()
+twoDaysFromToday.setDate(twoDaysFromToday.getDate() + 2)
+const tomorrow = new Date()
+tomorrow.setDate(tomorrow.getDate() + 1)
+const sevenDaysFromToday = new Date()
+sevenDaysFromToday.setDate(sevenDaysFromToday.getDate() + 7)
+const rent1 =  new Rent().create([], bike, user, today, twoDaysFromToday)
+
+const user2 = new User('Maria Clara', 'maria@mail.com', '3123')
+
+const app = new App()
+app.registerUser(user)
+
+console.log(app.findUser('maria@mail.com'))
